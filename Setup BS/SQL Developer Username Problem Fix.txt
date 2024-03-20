@@ -1,0 +1,5 @@
+\sqldeveloper\ide\bin\ide.conf
+
+Add the following line:
+
+AddVMOption -Duser.name=Shabab

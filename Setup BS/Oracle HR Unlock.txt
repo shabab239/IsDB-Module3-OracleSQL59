@@ -1,0 +1,27 @@
+ALTER SESSION SET CONTAINER = orclpdb;
+
+COLUMN name FORMAT a15;
+
+SELECT name, open_mode FROM v$pdbs;
+
+ALTER PLUGGABLE DATABASE OPEN;
+
+ALTER PLUGGABLE DATABASE orclpdb SAVE STATE;
+
+@F:\oracle_db_final\db_home\demo\schema\human_resources\hr_main.sql hr users temp admin F:\oracle_db_final\db_home\demo\schema\log\ localhost:1521/orclpdb
+
+##### Login again as sysdba in SQLPlus.
+
+ALTER SESSION SET CONTAINER = orclpdb;
+
+COLUMN name FORMAT a15;
+
+SELECT name, open_mode FROM v$pdbs;
+
+ALTER PLUGGABLE DATABASE OPEN;
+
+ALTER PLUGGABLE DATABASE orclpdb SAVE STATE;
+
+ALTER USER HR ACCOUNT UNLOCK IDENTIFIED BY password;
+
+conn HR/password@localhost:1521/orclpdb
