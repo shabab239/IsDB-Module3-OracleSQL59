@@ -1,0 +1,2 @@
+DDL cannot be rolled back.
+truncate is DDL, empties the table keeping structure intact.

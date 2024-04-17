@@ -8,7 +8,7 @@ where (salary, department_id) in (
 )
 order by department_id;
 
--- Allah zane edi diya ki hoilo!
+-- Allah zane edi diya ki hoilo! -- Pore Bujhsi LoL
 select last_name, manager_id from employees
 where employee_id not in (
     select manager_id from employees where manager_id is not null
