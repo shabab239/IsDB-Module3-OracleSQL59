@@ -1,0 +1,31 @@
+-- Q1. Display job ID of jobs that wre done by more than 3 employees for more than 100 days.
+select distinct(job_id)
+from employees
+where current_date - hire_date > 100 
+group by job_id
+having count(employee_id) > 3;
+
+
+-- Q2. Display departments where any manager is managing more than 5 employees.
+select distinct(department_id)
+from employees
+group by manager_id, department_id
+having count(employee_id) > 5;
+
+
+-- Q3. Display how many employees joined in each month of the current year. 
+select 
+sum(case when to_char(hire_date, 'MM') = '01' then 1 else 0 end) as "January",
+sum(case when to_char(hire_date, 'MM') = '02' then 1 else 0 end) as "February",
+sum(case when to_char(hire_date, 'MM') = '03' then 1 else 0 end) as "March",
+sum(case when to_char(hire_date, 'MM') = '04' then 1 else 0 end) as "April",
+sum(case when to_char(hire_date, 'MM') = '05' then 1 else 0 end) as "May",
+sum(case when to_char(hire_date, 'MM') = '06' then 1 else 0 end) as "June",
+sum(case when to_char(hire_date, 'MM') = '07' then 1 else 0 end) as "July",
+sum(case when to_char(hire_date, 'MM') = '08' then 1 else 0 end) as "August",
+sum(case when to_char(hire_date, 'MM') = '09' then 1 else 0 end) as "September",
+sum(case when to_char(hire_date, 'MM') = '10' then 1 else 0 end) as "October",
+sum(case when to_char(hire_date, 'MM') = '11' then 1 else 0 end) as "November",
+sum(case when to_char(hire_date, 'MM') = '12' then 1 else 0 end) as "December"
+from employees
+where to_char(hire_date, 'YYYY') = to_char(current_date, 'YYYY');
